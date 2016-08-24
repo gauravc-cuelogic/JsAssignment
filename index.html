@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    var intVar = 100;//integer variable
+    console.log('integer Value => ');
+    console.log(intVar);
+    var stringVar = "Gaurav Chauriya";//String variable
+    console.log('String Value => '+stringVar);
+    var booleanVar = true;// boolean variable
+    console.log('Boolean Value => ');
+    console.log(booleanVar);
+    var ObjectVar = {type:"variable", contains:"object", behaviour:"can have multipe values"};//object variable
+    console.log('Object Value => ');
+    console.log(ObjectVar);
+    var arrayVar = ["element0", "element1", "element2", "elementN"];
+    console.log('Array Value => ');
+    console.log(arrayVar);
+    console.log('================================================================================');
+    console.log('Deleting array value => ');
+    arrayVar.splice(arrayVar.indexOf('elementN'),1);
+    console.log(arrayVar);
+    console.log('Insert value in an array =>');
+    arrayVar.push('Inserted at last');
+    console.log(arrayVar);
+    arrayVar.splice('3',0,'inserted at nth position');
+    console.log(arrayVar);
+    console.log('Toggle boolean varilable=>');
+    console.log('before Toggle :'+ booleanVar+' AfterToggle :'+ !booleanVar);
+    console.log('======================================================================================');
+    console.log('Different ways for creating objects');
+    console.log('object Type 1 :');
+    console.log(ObjectVar);
+    console.log('object Type 2 :');
+    var objectTypeTwo = {};
+    objectTypeTwo.stringValue = 'string Value';
+    objectTypeTwo.integerValue = 100;
+    objectTypeTwo.booleanValue = true;
+    objectTypeTwo.objectValue = ObjectVar;
+    objectTypeTwo.arrayValue = arrayVar;
+    objectTypeTwo.functionInObject = function (){
+      return 'this is from function';
+    }
+    console.log(objectTypeTwo);
+    console.log('using function from object : '+ objectTypeTwo.functionInObject());
+    console.log('======================================================================================');
+    console.log('Different ways for creating arrays');
+    var differentArraytypes = [];//declaring array
+    differentArraytypes = ['val1', 'val2', 'val3'];
+    var arrayType2[0] = 'val1';
+    arrayType2[1] = 'val2';
+    arrayType2[2] = 'val3';
+  </script>
+</body>
+</html>
