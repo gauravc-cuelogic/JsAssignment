@@ -43,9 +43,17 @@
     }
     console.log(objectTypeTwo);
     console.log('using function from object : '+ objectTypeTwo.functionInObject());
-    /*console.log('object Type 3 :');
-    var thirdObject = new
-    console.log(ObjectVar);*/
+    function objeType3 (desc) {
+      this.desc = desc;
+      this.color = "red";
+      this.getInfo = function getInfo() {
+          return 'A ' + this.color + ' ' + this.desc + '.';
+      };
+    }
+    //object using the constructor function
+    var ObjeType3 = new objeType3('bird');
+    ObjeType3.color = "blue";
+    console.log(ObjeType3.getInfo()); //displays 'A blue bird.'
     console.log('======================================================================================');
     console.log('Different ways for creating arrays');
     var differentArraytypes = [];//declaring array
@@ -57,7 +65,7 @@
     arrayType2[2] = 'val3';
     console.log(arrayType2);
     var arrayType3 = new Array('val1', 'val2', 'val3');
-    console.log(arrayType3); 
+    console.log(arrayType3);
   </script>
 </body>
 </html>
