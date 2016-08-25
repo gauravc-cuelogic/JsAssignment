@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<style>
+  span {
+    border: thin solid;
+    cursor: pointer;
+    margin: 0 3px;
+    padding: 1px 8px 0 3px;
+  }
+</style
+<body>
+  <div>
+    <div>
+      <span style="color: green;" onclick="selectTab(event)" id="add">Add</span>
+      <span id="Substract" onclick="selectTab(event)">Substract</span>
+      <span id="divide" onclick="selectTab(event)">Divide</span>
+      <span id="mul" onclick="selectTab(event)">Multiply</span>
+    </div>
+    </p>
+    <label><input type="button" value="Need More Inputs" id="MoreInputs" onclick="addFields()"></label>
+    </p>
+    <div id="inputSection">
+      <lable>Input Value 1 :</lable><input type="text" name="value1" id="value1" class="Inputs">
+      </p>
+      <lable>Input Value 2 :</lable><input type="text" name="value2" id="value2" class="Inputs">
+      </p>
+    </div>
+    <label><input type="button" value="calculate" onclick="calculate()"></label>
+    </p>
+    <div id="result" style="display:none;">
+    <lable>Result / comment : </label>
+      <label id="output"></label>
+    </div>
+  </div>
+  <div>
+    </p>
+    <input type="button" onclick="showCount();" value="show 100 count">
+    </p>
+    <div>
+      <label>Using For</label><label id="forCount"></label>
+      </p>
+      <label>Using For in</label><label id="forIn"></label>
+      </p>
+      <label>Using While</label><label id="whileCount"></label>
+      </p>
+      <label>Using do While</label><label id="doWhileCount"></label>
+      </p>
+    </div>
+  </div>
+  <script>
+  "use strict";
+  var superObj = {};
+  superObj = {
+    selectedTab : 'add',
+    minFields : 2,
+    calculation : 0,
+    calculate : function (operator){
+      try {
+      var inputs = document.getElementsByClassName('Inputs');
+      var errCaught = false;
+      this.calculation = 0;
+      for(var i = 0; i < inputs.length; i += 1){
+        //alert(isNaN(inputs[i].value)+"   "+ inputs[i].value+ "    "+this.calculation);
+        if(isNaN(inputs[i].value) || inputs[i].value == ''){
+          //alert(inputs[i].id);
+          document.getElementById(inputs[i].id).style.background = "#a55454";
+          errCaught = true;
+        }else{
+          //alert(inputs[i].id);
+          document.getElementById(inputs[i].id).style.background= "white";
+          switch (operator) {
+            case "add" :for (i = 0; i < 5; i++) {
+    text += "The number is " + i + "<br>";
+}
+              this.calculation = this.calculation + parseInt(inputs[i].value);
+              break;
+            case "Substract" :
+              this.calculation = i == 0 ? parseInt(inputs[i].value) : this.calculation - parseInt(inputs[i].value) ;
+              break;
+            case "divide" :
+              this.calculation = i == 0 ? parseInt(inputs[i].value) : this.calculation / parseInt(inputs[i].value) ;
+              break;
+            case "mul" :
+              this.calculation = i == 0 ? parseInt(inputs[i].value) : this.calculation * parseInt(inputs[i].value) ;
+              break;
+            default :
+             errCaught = false;
+             break;
+           }
+        }whileCount
+      }
+      if(errCaught ){
+          throw "Invalid Input Encountered";
+        }else{
+          return this.calculation;
+      }
+  }
+   catch(err) {
+       //document.getElementById('output').innerHTML = err;
+       return err;
+   }
+    },
+  }
+
+  function selectTab(e) {
+   document.getElementById(superObj.selectedTab).style.color = "black";
+   var element = e.target.id;
+   document.getElementById(element).style.color = "green";
+   superObj.selectedTab = element;
+  }
+  function addFields(){
+    superObj.minFields++;
+    var div = document.getElementById('inputSection').innerHTML + "<lable>Input Value " + superObj.minFields + " :</lable><input type='text' name='value" + superObj.minFields + "'  class='Inputs' id='value" + superObj.minFields + "'></p>";
+    document.getElementById('inputSection').innerHTML = div;
+  }
+
+  function calculate(){
+    document.getElementById('result').style.display = "block";
+    var operation = superObj.selectedTab;
+    var result = superObj.calculate(operation);
+    document.getElementById('output').innerHTML = result;
+  }
+
+  function showCount(){
+    var arrayForIn = [];
+    var forInVar,forCountVar,whileCountVar,doWhileCountVar;
+    for (var i = 0; i <= 100; i++) {
+      forCountVar += i + ",";
+      arrayForIn[i] = i;
+    }
+    document.getElementById('forCount').innerHTML = forCountVar;
+
+    for (var x in arrayForIn) {
+      forInVar += arrayForIn[x] + ",";
+    }
+    document.getElementById('forIn').innerHTML = forInVar;
+
+     var i = 0;
+    while (i <= 100) {
+      whileCountVar += i + ",";
+      i++;
+    }
+    document.getElementById('whileCount').innerHTML = whileCountVar;
+
+     var i = 0;
+    do {
+        doWhileCountVar += i + ",";
+        i++;
+    }
+    while (i <= 100);
+    document.getElementById('doWhileCount').innerHTML = doWhileCountVar;
+
+  }
+  </script>
+</body>
+</html>
