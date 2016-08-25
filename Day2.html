@@ -106,11 +106,6 @@
    document.getElementById(element).style.color = "green";
    superObj.selectedTab = element;
   }
-  function addFields(){
-    superObj.minFields++;
-    var div = document.getElementById('inputSection').innerHTML + "<lable>Input Value " + superObj.minFields + " :</lable><input type='text' name='value" + superObj.minFields + "'  class='Inputs' id='value" + superObj.minFields + "'></p>";
-    document.getElementById('inputSection').innerHTML = div;
-  }
 
   function calculate(){
     document.getElementById('result').style.display = "block";
@@ -148,6 +143,11 @@
     while (i <= 100);
     document.getElementById('doWhileCount').innerHTML = doWhileCountVar;
 
+  }
+  function addFields(){
+    superObj.minFields++;
+    var div = document.getElementById('inputSection').innerHTML + "<lable>Input Value " + superObj.minFields + " :</lable><input type='text' name='value" + superObj.minFields + "'  class='Inputs' id='value" + superObj.minFields + "'></p>";
+    document.getElementById('inputSection').innerHTML = div;
   }
   </script>
 </body>
