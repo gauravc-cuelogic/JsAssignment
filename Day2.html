@@ -50,57 +50,55 @@
   <script>
   "use strict";
   var superObj = {};
-  superObj = {
-    selectedTab : 'add',
-    minFields : 2,
-    calculation : 0,
-    calculate : function (operator){
-      try {
-      var inputs = document.getElementsByClassName('Inputs');
-      var errCaught = false;
-      this.calculation = 0;
-      for(var i = 0; i < inputs.length; i += 1){
-        //alert(isNaN(inputs[i].value)+"   "+ inputs[i].value+ "    "+this.calculation);
-        if(isNaN(inputs[i].value) || inputs[i].value == ''){
-          //alert(inputs[i].id);
-          document.getElementById(inputs[i].id).style.background = "#a55454";
-          errCaught = true;
-        }else{
-          //alert(inputs[i].id);
-          document.getElementById(inputs[i].id).style.background= "white";
-          switch (operator) {
-            case "add" :for (i = 0; i < 5; i++) {
-    text += "The number is " + i + "<br>";
-}
-              this.calculation = this.calculation + parseInt(inputs[i].value);
-              break;
-            case "Substract" :
-              this.calculation = i == 0 ? parseInt(inputs[i].value) : this.calculation - parseInt(inputs[i].value) ;
-              break;
-            case "divide" :
-              this.calculation = i == 0 ? parseInt(inputs[i].value) : this.calculation / parseInt(inputs[i].value) ;
-              break;
-            case "mul" :
-              this.calculation = i == 0 ? parseInt(inputs[i].value) : this.calculation * parseInt(inputs[i].value) ;
-              break;
-            default :
-             errCaught = false;
-             break;
-           }
-        }whileCount
-      }
-      if(errCaught ){
-          throw "Invalid Input Encountered";
-        }else{
-          return this.calculation;
-      }
-  }
-   catch(err) {
-       //document.getElementById('output').innerHTML = err;
-       return err;
-   }
-    },
-  }
+    superObj = {
+      selectedTab : 'add',
+      minFields : 2,
+      calculation : 0,
+      calculate : function (operator){
+        try {
+        var inputs = document.getElementsByClassName('Inputs');
+        var errCaught = false;
+        this.calculation = 0;
+        for(var i = 0; i < inputs.length; i += 1){
+          //alert(isNaN(inputs[i].value)+"   "+ inputs[i].value+ "    "+this.calculation);
+          if(isNaN(inputs[i].value) || inputs[i].value == ''){
+            //alert(inputs[i].id);
+            document.getElementById(inputs[i].id).style.background = "#a55454";
+            errCaught = true;
+          }else{
+            //alert(inputs[i].id);
+            document.getElementById(inputs[i].id).style.background= "white";
+            switch (operator) {
+              case "add" :
+                this.calculation = this.calculation + parseInt(inputs[i].value);
+                break;
+              case "Substract" :
+                this.calculation = i == 0 ? parseInt(inputs[i].value) : this.calculation - parseInt(inputs[i].value) ;
+                break;
+              case "divide" :
+                this.calculation = i == 0 ? parseInt(inputs[i].value) : this.calculation / parseInt(inputs[i].value) ;
+                break;
+              case "mul" :
+                this.calculation = i == 0 ? parseInt(inputs[i].value) : this.calculation * parseInt(inputs[i].value) ;
+                break;
+              default :
+               errCaught = false;
+               break;
+             }
+          }
+        }
+        if(errCaught ){
+            throw "Invalid Input Encountered";
+          }else{
+            return this.calculation;
+        }
+    }
+     catch(err) {
+         //document.getElementById('output').innerHTML = err;
+         return err;
+     }
+      },
+    }
 
   function selectTab(e) {
    document.getElementById(superObj.selectedTab).style.color = "black";
