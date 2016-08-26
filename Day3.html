@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <pre>
+  <script>
+  "use strict";
+  /**
+  * 1. Write a program to calculate factorial using recursive strategy.
+  */
+  //prompt user to enter a number to calculate the factorial
+  const num = prompt('Please Enter Number.')
+
+  function factorial(n) {
+    if(isNaN(n))
+      return false;
+      if(n == 0) {
+          return 1
+      } else {
+          return n * factorial(n - 1);
+      }
+  }
+
+  document.writeln(factorial(num));
+  document.writeln('=============================================');
+  /**
+  * EOF program 1
+  */
+
+  /**
+  * Day 2 program 2
+  */
+  class Student {
+    constructor(fName, lName, age, std) {
+
+      this._fName = fName;
+      this._lName = lName;
+      this._age = age;
+      this._std = std;
+    }
+  }
+  Student.prototype.fullName = function (){
+    return this._fName + ' ' + this._lName;
+  };
+  let studentObj1 = new Student('studentOne', 'One', 7, 4);
+  let studentObj2 = new Student('studentTwo', 'Two', 8, 5);
+  let studentObj3 = new Student('studentThree', 'Three', 9, 6);
+
+  document.writeln(studentObj1.fullName());
+  document.writeln('=============================================');
+
+  /**
+  * EOF Day 2 program 2
+  */
+
+  /**
+  * 2. Update program - 2 of Practicals Day 2 to add a method that will print name (called printName())
+  * of each student object in its prototype.
+  */
+  Student.prototype.printName = function (){
+    return "Full Name : "+this._fName + ' ' + this._lName + '</br>' + 'Age :' + this._age + ' years</br>Class :' + this._std + ' standard';
+  };
+  document.writeln(studentObj1.printName());
+  document.writeln('=============================================');
+  /**
+  * EOF program 2
+  */
+
+  /**
+  * program 3
+  * 3.1. Accept two string values as arguments, where first value will be a long word(can be any random characters as well),
+  * second string will be a single character or substring that will already exist in the first value.
+  * 3.2. The function should then return an object with properties - 'count' which will count the no of occurrences of substring
+  * in the first value, ' lastIndex' which will return the index of last occurrence of the substring in the first value.
+  * return -1 if the substring can't be found
+  */
+    function checkString (){
+      const firstString = prompt('Enter Long word');
+      if(firstString != ''){
+        var substring = prompt('Enter substring from "'+firstString+'"');
+      }
+      const countOccur = (firstString.length - firstString.replace(new RegExp(substring,"g"), '').length) / substring.length;
+      return {
+                'count' : countOccur,
+                'lastIndex' : countOccur > 0 ? firstString.lastIndexOf(substring) : -1
+              };
+    }
+    const stringObj = checkString ();
+    document.writeln(stringObj);
+    console.log(stringObj);
+    document.writeln('=============================================');
+  /**
+  * EOF program 3
+  */
+
+  /**
+  * 4. Write a function that will accept a unix timeStamp and covert to its UTC equivalent value
+  */
+
+  function UTCequivalent (){
+    const unixTime = prompt('Enter unix timeStamp', Date.now());
+
+    var utc_timestamp = new Date(unixTime * 1000);
+
+    return utc_timestamp;
+  }
+  document.writeln(UTCequivalent());
+  document.writeln('=============================================');
+  /**
+  * EOF program 4
+  */
+
+  /**
+  * 5.  Write a function that will accept a single dimensional array whose value will be like ['00','01','11','10','11','00']
+  * and break it into a 2 dimensional array like the following:
+  *    [
+  *        [0,0,1,1,1,0]
+  *        [0,1,1,0,1,0]
+  *    ]
+  *    the  length of array can be dynamic and contain as many values as possible
+  */
+  twoDArray();
+  function twoDArray (){
+    const inputArray = ['00','01','11','10','11','00'];
+    const outputArray1 = [];
+    const outputArray2 = [];
+    const outputArray = [];
+    document.writeln(inputArray);
+    inputArray.filter(function(a) {
+      outputArray1.push(a[0]);
+      outputArray2.push(a[1]);
+    });
+    outputArray.push(outputArray1);
+    outputArray.push(outputArray2);
+    document.writeln(outputArray);
+    console.log(outputArray);
+    document.writeln('=============================================');
+  }
+  /**
+  * EOF program 5
+  */
+
+  /**
+  * 6.1. Create an array and add numbers 1 to 100 in it
+  */
+  const numberArray = [];
+  function addNumber (){
+    for ( var i = 1; i <= 100; i++ ){
+      numberArray.push(i);
+    }
+  }
+  /**
+  * EOF program 6.1
+  */
+
+  /**
+  * 6.2. Print each element of that array in a new line WITHOUT using any loop structure
+  */
+  function printWithoutLoop (){
+    addNumber();
+
+    numberArray.filter(function(a) {
+        document.writeln(a);
+    });
+
+  }
+  printWithoutLoop();
+  document.writeln('=============================================');
+  /**
+  * EOF program 6.2
+  */
+</script>
+</pre>
+</body>
+</html>
