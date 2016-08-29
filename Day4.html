@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul>
+      <li>first</li>
+      <li>second</li>
+      <li>third</li>
+      <li>fourth</li>
+      <li>fifth</li>
+    </ul>
+    <pre>
+      <script>
+
+      /**
+      * 1. Write a program to copy two objects. It should accept two arguments - source ( the object from which we need to copy)
+      *   and target ( to which we need to copy). The target object will initially be empty.
+      */
+      function copyObject(source, target){
+          if (source == null || typeof source != "object") return source;
+          if (source.constructor != Object && source.constructor != Array) return source;
+          if (source.constructor == Date || source.constructor == RegExp || source.constructor == Function ||
+              source.constructor == String || source.constructor == Number || source.constructor == Boolean)
+              return new source.constructor(source);
+
+          target = target || new source.constructor();
+
+          for (var name in source) {
+              target[name] = typeof target[name] == "undefined" ? copyObject(source[name], null) : target[name];
+          }
+          return target;
+      }
+
+      /**
+      * EOF program 1
+      */
+
+      /**
+      * 2. Write a program to merge two objects. It should accept two arguments - objectA and objectB.
+      *   The result object will have the combined values and should not change the structure of either objectA or objectB.
+      *  If both objects have same properties, consider using objectA property instead.
+      */
+      function mergeObjects(objectA,objectB){
+        var mergedObject = {};
+
+        for (var key in objectA) {
+          mergedObject[key] = objectA[key];
+         }
+
+        for (var key in objectB) {
+            if(!objectA.hasOwnProperty(key))
+              mergedObject[key] = objectB[key];
+         }
+
+        return mergedObject;
+    }
+
+    /**
+    * EOF program 2
+    */
+
+    /**
+    * 3. Extend number type to have a 'float()' function that will convert any given 'integer' value to its float equivalent.
+    *   (a no such as 5 should become 5.00) The function should only return that value and should not affect the actual number's value.
+    */
+    function float(value){
+      return value.toFixed(2);
+    }
+
+    /**
+    * EOF program 3
+    */
+
+    /**
+    * 4. Extend number type to have a 'int()' function that will convert any given 'float' value to its integer equivalent.
+    *  (a no such as 5.00 should become 5). The function should only return that value and should not affect the actual number's value.
+    */
+
+    function int(value){
+      return parseInt(value);
+    }
+    /**
+    * EOF program 4
+    */
+
+    /**
+    * 5. Write a program to loop through the children of a ul element(ul will have 5 li's).
+    *   Loop through each of the li and attach a function on it that will alert the value of that li (html text inside the li).
+    */
+
+    function trverseUl(){
+      var lists = document.getElementsByTagName("ul");
+      for (var i = 0; i < lists.length; ++i) {
+        var items = lists[i].getElementsByTagName("li");
+        for (var j = 0; j < items.length; ++j) {
+            var li = items[j].innerHTML;
+            document.writeln(li);
+        }
+      }
+    }
+
+    /**
+    * EOF program 5
+    */
+
+    var obj = {
+        subObj: {
+            num: 234,
+            text: "test"
+        },
+        array: [1, "test"],
+        date: new Date(),
+        regex: new RegExp(/a/gi),
+        func: function(q) { return 1 + q; },
+        text: "test",
+        num: 123,
+        bool: true
+      }
+
+      objSec = {
+        name: 'gaurav',
+        num:789
+      };
+
+    console.log(copyObject(obj)); // program 1
+    console.log(mergeObjects(obj, objSec)); // program 2
+    console.log(float(5)+ '   '+ int(5.00)); // program 3 and 4
+    trverseUl(); // program 5
+    </script>
+    </pre>
+  </body>
+</html>
